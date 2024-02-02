@@ -1,57 +1,29 @@
-console.log("Hello Yuvanraj");
+const http = require('http')
 
-const { write } = require('fs');
-/*
-// Lesson - 1
-const os = require('os')
-const path = require('path')
+const PORT = 3000;
 
-// const math = require('./math')
-// console.log("add"+" "+math.add(5,1))
+const fs =  require('fs')
+const server = http.createServer((req,res)=>{
+    res.writeHead(200,{'Content-Type': 'text/html'})
+    fs.readFile('index.html', (error,data)=> {
+        if(error){
+            res.writeHead(404)
+            res.write('Page not found')
+        }else{
+            res.write(data)
+        }
+        res.end()
+    })
 
-const {add,sub,mul,div} = require('./math') 
-console.log("add"+" "+add(5,1))
-console.log("sub"+" "+sub(5,1))
-console.log("mul"+" "+mul(5,2))
-console.log("div"+" "+div(50,2))
-*/
+})
 
-//Lesson - 2
 
-const path = require('path') 
-const fsPromises = require('fs').promises
-
-//Read file async function declaration :
-const fileOps = async () => {
-    try{
-        const data = 
-        //Write the file :
-        await fsPromises.writeFile(path.join(__dirname,'files','write_text.txt'),'I Love You diii')
-        console.log('Write file is completed') 
-        //Append the file :
-        await fsPromises.appendFile(path.join(__dirname,'files','write_text.txt'),'\nMy Dear Ammu')
-        console.log('File Append is completed...')
-        //Rename the file :
-        await fsPromises.rename(path.join(__dirname,'files','write_text.txt'),path.join(__dirname,'files','love.txt'))
-        console.log('Rename is completed')
-        //Read the file :
-        await fsPromises.readFile(path.join(__dirname,'files','love.txt'),'utf8')
-        console.log('Read file is completed')
-        //Delete the file :
-        await fsPromises.unlink(path.join(__dirname,'files','love.txt'))
-        console.log('Delete file is completed')
-    } catch (e) {
-        console.error('catch error : '+e)
+server.listen(PORT,(err)=>{
+    if(err){
+        console.log('log error: '+err)
+        console.error('Error: '+err)
+    }else{
+        console.log('Server is running on ' + PORT)
     }
-}
-
-
-//function calling :
-fileOps()
-
-
-//exit on Uncaught errors
-process.on('uncaughtException', err => {
-    console.log(`There was an uncaught error : ${err}`)
-    process.exit(1)
-});
+   
+})

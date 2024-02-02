@@ -1,0 +1,30 @@
+{
+  "name": "learn",
+  "version": "1.0.0",
+  "description": "learning",
+  "main": "index.js",
+  "author": "Yuvanraj",
+  "license": "ISC",
+  "scripts": {
+    "start": "nodemon index.js",
+    "dev": "nodemon index"
+  },
+  "dependencies": {
+    "date-fns": "^3.3.1",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yuvanraj24/Node-Learn.git"
+  },
+  "keywords": [
+    "node_learning"
+  ],
+  "bugs": {
+    "url": "https://github.com/Yuvanraj24/Node-Learn/issues"
+  },
+  "homepage": "https://github.com/Yuvanraj24/Node-Learn#readme"
+}
